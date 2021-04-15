@@ -7,10 +7,11 @@ import Navigation from "./components/Navigation";
 import Products from "./components/Products";
 import ShoppingCart from "./components/ShoppingCart";
 import { CartContext, ProductContext } from "./contexts";
+import { useLocalStorage } from "./components/hooks";
 
 function App() {
   const [products] = useState(data);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useLocalStorage("cart", []);
 
   const removeItem = (itemId) => {
     setCart(cart.filter((inCartItem) => inCartItem.id !== itemId));
