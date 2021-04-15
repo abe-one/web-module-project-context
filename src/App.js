@@ -18,10 +18,20 @@ function App() {
   };
 
   const addItem = (item) => {
-    if (cart.find((cartItem) => cartItem.id === item.id)) {
+    const duplicateItem = cart.findIndex((cartItem) => cartItem.id === item.id);
+    // console.log(duplicateItem);
+    // console.log(cart[duplicateItem]);
+    if (duplicateItem !== -1) {
       console.log("it's there");
+      let newCart = [...cart];
+      newCart[duplicateItem] = {
+        ...cart[duplicateItem],
+        quantity: cart[duplicateItem].quantity + 1,
+      };
+      // console.log(newCart);
+      setCart(newCart);
     } else {
-      setCart([...cart, item]);
+      setCart([...cart, { ...item, quantity: 1 }]);
       console.log("it's not there");
     }
   };

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../contexts";
 
-const Item = ({ id, image, title, price }) => {
+const Item = ({ id, image, title, price, quantity }) => {
   const { removeItem } = useContext(CartContext);
 
   const handleRemoveItem = (_) => removeItem(id);
@@ -13,6 +13,7 @@ const Item = ({ id, image, title, price }) => {
       <div>
         <h1>{title}</h1>
         <p>$ {price}</p>
+        <p>Quantity: {quantity}</p>
         <button onClick={handleRemoveItem}>Remove from cart</button>
       </div>
     </div>
