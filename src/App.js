@@ -18,7 +18,12 @@ function App() {
   };
 
   const addItem = (item) => {
-    setCart([...cart, item]);
+    if (cart.find((cartItem) => cartItem.id === item.id)) {
+      console.log("it's there");
+    } else {
+      setCart([...cart, item]);
+      console.log("it's not there");
+    }
   };
 
   return (
